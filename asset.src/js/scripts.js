@@ -108,4 +108,3 @@ function _onVideoPlayProgress(id) {
 function _onVideoPause(id) {
 	$('body').removeClass('video-playing');
 }
-
