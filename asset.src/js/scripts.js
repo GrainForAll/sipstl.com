@@ -63,10 +63,16 @@ $(function() {
 			player.addEvent('pause', _onVideoPause);
 			player.addEvent('finish', _onVideoFinish);
 
-			if ($('html').hasClass('no-touch')) {
+			var played = localStorage.getItem('sipSTLVideoPlay');
 
-				if ($(window).width() > 900) {
-					player.api('play');		
+			if (played !== 'true') {
+
+				if ($('html').hasClass('no-touch')) {
+
+					if ($(window).width() > 900) {
+						player.api('play');
+						localStorage.setItem('sipSTLVideoPlay', 'true');
+					}
 				}
 			}
 		});
@@ -80,7 +86,7 @@ function _changePagination(index) {
 		$(this).removeClass('swiper-active-switch');
 	});
 
-	$(activeItem).addClass('swiper-active-switch');
+	$('.pagination-wrapper .swiper-pagination-switch[data-index=' + index + ']').addClass('swiper-active-switch');
 
 	$('.iphone-wrapper').find('.swiper-slide').removeClass('visible-fade-slow');
 	$('.iphone-wrapper').find('.swiper-slide[data-index=' + index + ']').addClass('visible-fade-slow');
@@ -91,21 +97,15 @@ function _onVideoFinish(id) {
 }
 
 function _onVideoPlay(id) {
-	console.log('run');
 	$('html, body').animate( { scrollTop: 0 }, 400, 'easeOutExpo', function() {
 		$('body').addClass('video-playing');
 	});
 }
 
 function _onVideoPlayProgress(id) {
-	// console.log('run');
-	// $('html, body').animate( { scrollTop: 0 }, 400, 'easeOutExpo', function() {
-	// 	$('body').addClass('video-playing');
-	// });
 }
 
 function _onVideoPause(id) {
-	console.log('here');
 	$('body').removeClass('video-playing');
 }
 
