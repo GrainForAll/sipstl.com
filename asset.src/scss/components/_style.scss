@@ -1,0 +1,258 @@
+@include keyframes(down-arrow-bounce) {
+	0%, 20%, 50%, 80%, 100% {
+		@include transform(translateY(0));
+	}
+	40% {
+		@include transform(translateY(-15px));
+	}
+	60% {
+		@include transform(translateY(-7px));
+	}
+}
+
+body {
+	@include transition(background-color $transition-speed-normal ease);
+}
+
+body {
+	.logo-wrapper {
+		@include transition(opacity $transition-speed-normal ease);
+	}
+}
+
+body.video-playing {
+	background-color: black;
+	overflow: hidden;
+
+	.logo-wrapper {
+		@include opacity(0.0);
+		@include transition(opacity $transition-speed-normal ease);
+	}
+}
+
+hr {
+	background-color: $color-green-faded;
+}
+
+.app-store-badge-wrapper {
+	width: 220px;
+	height: 66px;
+	margin: 0 auto;
+
+	svg {
+		width: 100%;
+		height: 100%;
+
+	}
+}
+
+.logo-wrapper {
+
+	margin: 0 auto;
+
+	@media #{$small-only} {
+		width: 50%;
+	}
+
+	@media #{$medium-up} {
+		width: 200px;
+	}
+
+	svg {
+		width: 100%;
+		height: 100%;
+		path {
+			@include transition(fill $transition-speed-slow ease);
+		}
+	}
+
+	&:hover {
+		svg {
+			path {
+				fill: $color-white;
+				@include transition(fill $transition-speed-slow ease);
+			}	
+		}
+	}
+}
+
+.iphone-wrapper{
+	@media #{$large-up} {
+		width: 803px; // 738 / 3
+		height: 500px; //1560 / 3
+		background-image: url('../img/iphone-frame@2x.png');
+		background-size: 803px 500px;
+
+		position: relative;
+
+		margin: 0 auto;
+
+
+		.swiper-container {
+
+			position: absolute;
+			top: 110px;
+			right: 302px;
+			@include transform(skew(-60deg, 30deg));
+
+			width: 221px !important;
+			height: 228px !important;
+
+			.swiper-wrapper {
+				width: 100%;
+				height: 100%;			
+
+				.swiper-slide {
+					position: absolute;
+					z-index: 1;
+					width: 312px !important;
+					height: 338px !important;
+					margin-top: 24px !important;
+					margin-left: 91px !important;
+					@include transform(skew(60deg,-30deg));
+				}
+			}
+		}
+	}
+}
+
+.iphone-wrapper-small {
+	@media #{$small-medium} {
+		width: 260px;
+		height: 550px;
+		background-image: url('../img/iphone-frame-vertical@2x.png');
+		background-size: 260px 550px;
+		position: relative;
+		margin: 0 auto;
+
+		.swiper-container {
+
+			position: absolute;
+			background-color: blue;
+			top: 73px;
+			left: 20px;
+			width: 221px !important;
+			height: 383px !important;
+
+			.swiper-wrapper {
+				width: 100%;
+				height: 100%;			
+
+				.swiper-slide {
+					width: 100%;
+					height: 100%;
+				}
+			}
+		}
+	}
+}
+
+.pagination-wrapper {
+
+	// width: 246px; // 738 / 3
+	// margin: 0 auto;
+	text-align: center;
+
+	.swiper-pagination-switch {
+		display: inline-block;
+		width: 12px;
+		height: 12px;
+		@include border-radius(6px);
+
+		margin: 0 4px;
+
+		background-color: $color-green-faded;
+		@include transition(background-color $transition-speed-slow ease);
+
+
+		&.swiper-active-switch {
+			background-color: $color-purple-dark;
+			@include transition(background-color $transition-speed-slow ease);
+		}
+
+	}
+}
+
+
+.video-wrapper {
+	iframe {
+		width: 100%;
+
+		@media #{$small-only} {
+			height: 70.0vw !important;
+		}
+
+		@media #{$medium-only} {
+			height: 50.0vw !important;
+		}
+		
+	}
+}
+
+.left-arrow-wrapper, 
+.right-arrow-wrapper {
+	width: 52px;
+	height: 37px;
+
+	position: absolute;
+	top: 50%;
+	margin-top: -26px;
+
+	svg {
+		width: 100%;
+		height: 100%;
+		line {
+			@include transition(stroke $transition-speed-normal ease);
+		}
+	}
+
+	&:hover {
+		svg {
+			line {
+				stroke: $color-white !important;
+				@include transition(stroke $transition-speed-normal ease);
+			}
+		}
+	}
+}
+
+.left-arrow-wrapper {
+
+	@media #{$small-only} {
+		display: none;
+	}
+	
+	@media #{$medium-only} {
+		left: -80px;
+	}
+
+	@media #{$large-up} {
+		left: -100px;	
+	}
+	
+}
+
+.right-arrow-wrapper {
+
+	@media #{$small-only} {
+		display: none;
+	}
+	
+	@media #{$medium-only} {
+		right: -80px;
+	}
+
+	@media #{$large-up} {
+		right: -100px;	
+	}
+}
+
+p.statement {
+
+	font-size: 22px;
+
+	@media #{$small-only} {
+		font-size: 18px;
+	}
+	
+}

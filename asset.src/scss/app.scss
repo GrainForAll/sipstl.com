@@ -1,0 +1,37 @@
+@import "compass/css3";
+@import "functions/tint-shade";
+
+// Include app variables first, as we may use these variables in Foundation's Settings.
+@import "core/grid";
+@import "core/variables";
+
+// Foundation.
+@import "vendor/foundation-settings";
+
+@import "foundation/components/grid";
+@import "foundation/components/visibility";
+@import "foundation/components/type";
+@import "foundation/components/forms";
+
+
+// Vendor
+@import "vendor/foundation-overrides";
+
+// Application Globals.
+@import "core/reset";
+@import "core/mixins";
+
+
+// Application modules.
+// @import "modules/font";
+@import "modules/font";
+@import "modules/base-classes";
+@import "modules/px-vw";
+@import "modules/margin-padding";
+@import "modules/color";
+@import "modules/typography";
+
+
+// Components
+@import "vendor/idangerous.swiper";
+@import "components/style";

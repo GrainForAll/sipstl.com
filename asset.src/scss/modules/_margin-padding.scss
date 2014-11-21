@@ -1,0 +1,134 @@
+.no-padding {
+	padding: 0 !important;
+}
+.no-padding-left {
+	padding-left: 0 !important;
+}
+.no-padding-right {
+	padding-right: 0 !important;
+}
+.no-margin {
+	margin: 0 !important;
+}
+.no-margin-left {
+	margin-left: 0 !important;
+}
+.no-margin-right {
+	margin-right: 0 !important;
+}
+.no-margin-bottom {
+	margin-bottom: 0 !important;
+}
+.no-margin-top {
+	margin-top: 0 !important;
+}
+
+.auto-margin {
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+
+$multiplier: 4px;
+$multiplier-numeric: 4;
+
+// We need to run through each media query one at a time so that the specificity
+// from small up is respected.
+
+@for $i from 0 through 20 {
+	@media #{$small-up} {
+		.small-padding-top-#{$i}x {
+			padding-top: #{$i * $multiplier} !important;
+		}
+		.small-padding-bottom-#{$i}x {
+			padding-bottom: #{$i * $multiplier} !important;
+		}
+		.small-margin-top-#{$i}x {
+			margin-top: #{$i * $multiplier} !important;
+		}
+		.small-margin-bottom-#{$i}x {
+			margin-bottom: #{$i * $multiplier} !important;
+		}
+	}
+}
+
+@for $i from 0 through 40 {
+	@media #{$medium-up} {
+		.medium-padding-top-#{$i}x {
+			padding-top: #{$i * $multiplier} !important;
+		}
+		.medium-padding-bottom-#{$i}x {
+			padding-bottom: #{$i * $multiplier} !important;
+		}
+		.medium-margin-top-#{$i}x {
+			margin-top: #{$i * $multiplier} !important;
+		}
+		.medium-margin-bottom-#{$i}x {
+			margin-bottom: #{$i * $multiplier} !important;
+		}
+	}
+}
+
+@for $i from 0 through 20 {
+	@media #{$large-up} {
+		.large-padding-top-#{$i}x {
+			padding-top: #{$i * $multiplier} !important;
+		}
+		.large-padding-bottom-#{$i}x {
+			padding-bottom: #{$i * $multiplier} !important;
+		}
+		.large-margin-top-#{$i}x {
+			margin-top: #{$i * $multiplier} !important;
+		}
+		.large-margin-bottom-#{$i}x {
+			margin-bottom: #{$i * $multiplier} !important;
+		}
+	}
+}
+
+@for $i from 0 through 20 {
+	@media #{$xlarge-up} {
+		.xlarge-padding-top-#{$i}x {
+			padding-top: #{$i * $multiplier} !important;
+		}
+		.xlarge-padding-bottom-#{$i}x {
+			padding-bottom: #{$i * $multiplier} !important;
+		}
+		.xlarge-margin-top-#{$i}x {
+			margin-top: #{$i * $multiplier} !important;
+		}
+		.xlarge-margin-bottom-#{$i}x {
+			margin-bottom: #{$i * $multiplier} !important;
+		}
+
+
+		.xlarge-padding-top-flex-#{$i}x {
+			padding-top: #{ (($i * $multiplier-numeric)/$xlarge-max*100) +vw} !important;
+		}
+		.xlarge-padding-bottom-flex-#{$i}x {
+			padding-bottom: #{ (($i * $multiplier-numeric)/$xlarge-max*100) +vw} !important;
+		}
+		.xlarge-margin-top-flex-#{$i}x {
+			margin-top: #{ (($i * $multiplier-numeric)/$xlarge-max*100) +vw} !important;
+		}
+		.xlarge-margin-bottom-flex-#{$i}x {
+			margin-bottom: #{ (($i * $multiplier-numeric)/$xlarge-max*100) +vw} !important;
+		}
+	}
+}
+
+@for $i from 0 through 20 {
+	@media #{$xxlarge-up} {
+		.xxlarge-padding-top-#{$i}x {
+			padding-top: #{$i * $multiplier} !important;
+		}
+		.xxlarge-padding-bottom-#{$i}x {
+			padding-bottom: #{$i * $multiplier} !important;
+		}
+		.xxlarge-margin-top-#{$i}x {
+			margin-top: #{$i * $multiplier} !important;
+		}
+		.xxlarge-margin-bottom-#{$i}x {
+			margin-bottom: #{$i * $multiplier} !important;
+		}
+	}
+}

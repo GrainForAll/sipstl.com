@@ -1,0 +1,85 @@
+@mixin box-shadow($shadows...) {
+	-moz-box-shadow: $shadows;
+	-webkit-box-shadow: $shadows;
+	box-shadow: $shadows;
+}
+
+@mixin opacity($opacity) {
+    $legacy-support-for-ie: true;
+    
+	@if $legacy-support-for-ie {
+		filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity * 100)})");
+	}
+	opacity: $opacity;
+	-moz-opacity: $opacity;
+}
+
+@mixin opacity-imp($opacity, $important: no) {
+	@if $important == yes {
+		opacity: $opacity !important;
+		-moz-opacity: $opacity !important;
+		$opacity-ie: $opacity * 100;
+		filter: alpha(opacity=$opacity-ie) !important;
+	}
+	@else {
+		opacity: $opacity;
+		-moz-opacity: $opacity;
+		$opacity-ie: $opacity * 100;
+		filter: alpha(opacity=$opacity-ie);
+	}
+}
+
+@mixin position-absolute-full {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@mixin background-img-cover() {
+	background-repeat: no-repeat;
+	background-position: top center;
+	background-size: cover;
+}
+
+
+// Animation related
+
+@mixin animation($animate, $delay) {
+    $max: length($animate);
+    $animations: '';
+
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth($animate, $i)};
+
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
+    }
+    -webkit-animation: $animations;
+    -moz-animation:    $animations;
+    -o-animation:      $animations;
+    animation:         $animations;
+
+    -webkit-animation-delay: $delay;
+    -moz-animation-delay:    $delay;
+    -o-animation-delay:      $delay;
+    animation-delay:         $delay;
+}
+
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}

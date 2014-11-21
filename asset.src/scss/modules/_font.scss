@@ -1,0 +1,18 @@
+//
+// @font-face Mixins
+//
+@mixin sipstl-font-face($family, $name){
+	font-family: $name;
+	font-weight: normal;
+	src: url("../font/#{$family}/#{$name}.eot"); // IE9 Compat Modes
+	src: url("../font/#{$family}/#{$name}.eot?#iefix") format("embedded-opentype"), // IE6-IE8
+		 url("../font/#{$family}/#{$name}.woff") format("woff"); // Modern Browsers
+	 	 // url("../font/#{$family}/#{$name}.otf") format("truetype"); // Safari, Android, iOS
+}
+
+//
+// National
+//
+// @font-face{
+// 	@include grain-font-face('National', 'National-Regular');
+// }

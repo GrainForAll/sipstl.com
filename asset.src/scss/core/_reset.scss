@@ -1,0 +1,71 @@
+// Remove the gray overlay when tapping links on mobile devices.
+* {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	background-repeat: no-repeat;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	&:focus {
+		outline: none;
+	}
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+
+	li {
+		margin: 0;
+		padding: 0;
+	}
+}
+
+// Remove border and spacing from horizontal rules.
+hr {
+	display: block;
+	height: 1px;
+	width: 100%;
+	border: none;
+	margin: 0;
+}
+
+// SVG alignment.
+svg {
+	vertical-align: top;
+}
+
+
+// Clearfix
+
+/**
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    contenteditable attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that are clearfixed.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
+}

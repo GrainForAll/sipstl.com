@@ -1,0 +1,21 @@
+// Build out all text, button, and BG colors.
+@each $color in $colors {
+    $name: nth($color, 1);
+    $hex: nth($color, 2);
+
+    .bg-color-#{$name} {
+        background-color: $hex !important;
+    }
+
+    .font-color-#{$name} {
+        color: $hex !important;
+        @include transition(color $transition-speed-normal);
+    }
+
+    .font-color-#{$name}-hover {
+    	&:hover {
+    		color: $hex !important;
+    		@include transition(color $transition-speed-normal);
+    	}
+	}
+}

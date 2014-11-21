@@ -1,0 +1,279 @@
+// Imitate fake links with cursor.
+.fake-link,
+.fake-link-new {
+    cursor: pointer;
+}
+
+
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    user-drag: none;
+}
+
+/**
+ * Positioning.
+ */
+.relative {
+    position: relative;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.absolute-full {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+/**
+ * Opacity.
+ */
+.invisible {
+    @include opacity(0.0);
+    @include transition(opacity $transition-speed-normal);
+}
+
+.visible {
+    @include opacity(1.0);
+}
+
+.visible-fade {
+    @include opacity-imp(1.0, yes);
+    @include transition(opacity $transition-speed-normal);
+}
+
+.visible-fade-slow {
+    @include opacity-imp(1.0, yes);
+    @include transition(opacity $transition-speed-slow);
+}
+
+.visible-fade-ultra-slow {
+    @include opacity-imp(1.0, yes);
+    @include transition(opacity $transition-speed-ultra-slow);
+}
+
+.show-for-small-medium {
+    @media #{$small-medium} {
+        display: inherit !important;
+    }
+
+    @media #{$large-up} {
+        display: none !important;
+    }
+}
+
+.show-for-medium-large {
+    @media #{$small-only} {
+        display: none !important;
+    }
+
+    @media #{$medium-large} {
+        display: block !important;
+    }
+
+    @media #{$xlarge-up} {
+        display: none !important;
+    }
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+
+/**
+ * Full width wrappers.
+ */
+
+@mixin full-width() {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+@mixin full-height() {
+    height: 100% !important;
+    max-height: 100% !important;
+}
+
+.full-width {
+    @include full-width();
+}
+
+.full-height {
+    @include full-height();
+}
+
+@media #{$small-only} {
+    .full-width-small {
+        @include full-width();
+    }
+}
+@media #{$medium-only} {
+    .full-width-medium {
+        @include full-width();
+    }
+}
+
+@media #{$large-only} {
+    .full-width-large {
+        @include full-width();
+    }
+}
+
+@media #{$xlarge-only} {
+    .full-width-xlarge-only {
+        @include full-width();
+    }
+}
+
+@media #{$xxlarge-up} {
+    .full-width-xxlarge-up {
+        @include full-width();
+    }
+}
+
+@media #{$small-up} {
+    .full-width-small-up {
+        @include full-width();
+    }
+}
+@media #{$medium-up} {
+    .full-width-medium-up {
+        @include full-width();
+    }
+}
+
+@media #{$large-up} {
+    .full-width-large-up {
+        @include full-width();
+    }
+}
+
+@media #{$xlarge-up} {
+    .full-width-xlarge-up {
+        @include full-width();
+    }
+
+    .full-height-xlarge-up {
+        @include full-height();
+    }
+}
+
+/**
+ * Inline / block.
+ */
+
+
+ @mixin inline() {
+    display: inline !important;
+ }
+ 
+.inline {
+	@include inline();
+}
+
+@media #{$medium-up} {
+    .inline-medium-up {
+       @include inline();
+    }
+}
+
+@media #{$xlarge-up} {
+    .inline-xlarge-up {
+       @include inline();
+    }
+}
+
+.block {
+	display: block !important;
+}
+.inline-block {
+	display: inline-block !important;
+}
+
+
+/**
+ * Text Alteration.
+ */
+.text-center {
+	text-align: center;
+}
+
+/**
+ * Text alignment per viewport.
+ */
+@media #{$small-up} {
+    .small-text-left {
+        text-align: left;
+    }
+    .small-text-center {
+        text-align: center;
+    }
+    .small-text-right {
+        text-align: right;
+    }
+}
+
+@media #{$medium-up} {
+    .medium-text-left {
+        text-align: left;
+    }
+    .medium-text-center {
+        text-align: center;
+    }
+    .medium-text-right {
+        text-align: right;
+    }
+}
+
+@media #{$large-up} {
+    .large-text-left {
+        text-align: left;
+    }
+    .large-text-center {
+        text-align: center;
+    }
+    .large-text-right {
+        text-align: right;
+    }
+}
+
+@media #{$xlarge-up} {
+    .xlarge-text-left {
+        text-align: left;
+    }
+    .xlarge-text-center {
+        text-align: center;
+    }
+    .xlarge-text-right {
+        text-align: right;
+    }
+}
+
+@media #{$xxlarge-up} {
+    .xxlarge-text-left {
+        text-align: left;
+    }
+    .xxlarge-text-center {
+        text-align: center;
+    }
+    .xxlarge-text-right {
+        text-align: right;
+    }
+}
