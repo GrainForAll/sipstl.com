@@ -96,8 +96,12 @@ module.exports = function(grunt) {
                 dest: 'asset.dist/js/modernizr.js'
             },
             libs: {
-                src: ['bower_components/jquery/dist/jquery.js', 'bower_components/swiper/dist/idangerous.swiper.js', 'asset.src/js/froogaloop.js', 'bower_components/jquery-easing/jquery.easing.js'],
+                src: ['bower_components/jquery/dist/jquery.js', 'bower_components/swiper/dist/idangerous.swiper.js', 'asset.src/js/froogaloop.js', 'bower_components/jquery-easing/jquery.easing.js', 'asset.src/js/tappy.js'],
                 dest: 'asset.dist/js/libs.js'
+            },
+            functions: {
+                src: ['asset.src/js/functions.js'],
+                dest: 'asset.dist/js/functions.js'
             },
             js: {
                 src: ['asset.src/js/**/*.js'],

@@ -19,14 +19,17 @@ $(function(){
 });
 
 $(function() {
-	$('.swiper-pagination-switch').click(function() {
+
+	
+
+	$('.swiper-pagination-switch').tapClick( function() {
 		if (!$(this).hasClass('swiper-active-switch')) {
 			activeIndex = parseInt($(this).attr('data-index'), 10);
 			_changePagination(activeIndex);
 		}
 	});
 
-	$('.iphone-wrapper .left-arrow-wrapper').click(function() {
+	$('.iphone-wrapper .left-arrow-wrapper').tapClick( function() {
 		activeIndex--;
 		if (activeIndex < 1) {
 			activeIndex = 6;
@@ -34,7 +37,7 @@ $(function() {
 		_changePagination(activeIndex);
 	});
 
-	$('.iphone-wrapper .right-arrow-wrapper').click(function() {
+	$('.iphone-wrapper .right-arrow-wrapper').tapClick( function() {
 		activeIndex++;
 		if (activeIndex > 6) {
 			activeIndex = 1;
@@ -42,12 +45,12 @@ $(function() {
 		_changePagination(activeIndex);
 	});
 
-	$('.iphone-wrapper-small .left-arrow-wrapper').click(function() {
+	$('.iphone-wrapper-small .left-arrow-wrapper').tapClick( function() {
 		iphoneSwiper.stopAutoplay();
 		iphoneSwiper.swipePrev();
 	});
 
-	$('.iphone-wrapper-small .right-arrow-wrapper').click(function() {
+	$('.iphone-wrapper-small .right-arrow-wrapper').tapClick( function() {
 		iphoneSwiper.stopAutoplay();
 		iphoneSwiper.swipeNext();
 	});
