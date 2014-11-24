@@ -10,10 +10,25 @@ if (played == 'true') {
 }
 
 
+$(function() {
 
-// Swiper for small viewport only.
-// We load it on both so we don't have to check for window resize.
-$(function(){
+	$('.video-wrapper iframe').load(function() {
+
+		player = $f(document.getElementById('promotional-video'));
+
+		player.addEvent('ready', function(id) {
+		
+			player.addEvent('play', _onVideoPlay);
+			player.addEvent('playProgress', _onVideoPlayProgress);
+			player.addEvent('pause', _onVideoPause);
+			player.addEvent('finish', _onVideoFinish);
+
+			if (!playedBefore && !isTouch() && ($(window).width() > 900)) {
+				player.api('play');
+			}
+		});
+	});
+
 	iphoneSwiper = $('.iphone-wrapper-small').find('.swiper-container').swiper({
 		mode:'horizontal',
 		loop: true,
@@ -24,39 +39,18 @@ $(function(){
 	});
 
 	iphoneSwiper.startAutoplay();
-});
-
-$(function() {
-
-	_startPaginationCycle();
 
 	var imgLoadiPhoneWrapperLarge = imagesLoaded($('.iphone-wrapper'));
-
-	// Once images are loaded
-	imgLoadiPhoneWrapperLarge.on('done', function() {
-		$('.iphone-wrapper').addClass('visible-fade-slow');
-		$('.pagination-wrapper').addClass('visible-fade-slow');
-	});
+		imgLoadiPhoneWrapperLarge.on('done', function() {
+			$('.iphone-wrapper').addClass('visible-fade-slow');
+			$('.pagination-wrapper').addClass('visible-fade-slow');
+		});
 
 	var imgLoadiPhoneWrapperSmall = imagesLoaded($('.iphone-wrapper-small'));
-
-	// Once images are loaded
-	imgLoadiPhoneWrapperLarge.on('done', function() {
-		$('.iphone-wrapper-small').addClass('visible-fade-slow');
-		$('.pagination-wrapper-small').addClass('visible-fade-slow');
-	});
-
-
-	
-
-	$('.swiper-pagination-switch').tapClick( function() {
-		if (!$(this).hasClass('swiper-active-switch')) {
-			activeIndex = parseInt($(this).attr('data-index'), 10);
-			_changePagination(activeIndex);
-		}
-	});
-
-
+		imgLoadiPhoneWrapperLarge.on('done', function() {
+			$('.iphone-wrapper-small').addClass('visible-fade-slow');
+			$('.pagination-wrapper-small').addClass('visible-fade-slow');
+		});
 
 	$('.iphone-wrapper .left-arrow-wrapper').tapClick( function() {
 		_stopPaginationCycle();
@@ -86,31 +80,21 @@ $(function() {
 		iphoneSwiper.swipeNext();
 	});
 
-	$('.video-wrapper iframe').load(function() {
-
-		player = $f(document.getElementById('promotional-video'));
-
-		player.addEvent('ready', function(id) {
-		
-			player.addEvent('play', _onVideoPlay);
-			player.addEvent('playProgress', _onVideoPlayProgress);
-			player.addEvent('pause', _onVideoPause);
-			player.addEvent('finish', _onVideoFinish);
-
-			if (!playedBefore) {
-
-				if ($('html').hasClass('no-touch')) {
-
-					if ($(window).width() > 900) {
-						player.api('play');
-						localStorage.setItem('sipSTLVideoPlay', 'true');
-					}
-				}
-			}
-		});
+	$('.swiper-pagination-switch').tapClick( function() {
+		if (!$(this).hasClass('swiper-active-switch')) {
+			activeIndex = parseInt($(this).attr('data-index'), 10);
+			_changePagination(activeIndex);
+		}
 	});
+
+	_startPaginationCycle();
+
 });
 
+
+/*
+ * Pagination functions (only for large pagination, which is handled through custom functions)
+*/
 function _startPaginationCycle() {
 
 	iphoneSwiperInterval = setInterval(function(){
@@ -141,12 +125,13 @@ function _changePagination(index) {
 	$('.iphone-wrapper').find('.swiper-slide[data-index=' + index + ']').addClass('visible-fade-slow');
 }
 
-function _onVideoFinish(id) {
-	$('html, body').animate( { scrollTop: $('.iphone-wrapper').offset().top - 40 }, 1200, 'easeOutExpo', function() {});
-}
 
+
+/*
+ * Vimeo event functions
+*/
 function _onVideoPlay(id) {
-	if (!playedBefore) {
+	if (!playedBefore && !isTouch()) {
 		$('html, body').animate( { scrollTop: 0 }, 400, 'easeOutExpo', function() {
 			$('body').addClass('video-playing');
 		});
@@ -159,7 +144,11 @@ function _onVideoPlayProgress(id) {
 }
 
 function _onVideoPause(id) {
-	if (!playedBefore) {
+	if (!playedBefore && !isTouch()) {
 		$('body').removeClass('video-playing');
 	}
+}
+
+function _onVideoFinish(id) {
+	$('html, body').animate( { scrollTop: $('.iphone-wrapper').offset().top - 40 }, 1200, 'easeOutExpo', function() {});
 }
