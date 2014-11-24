@@ -43,18 +43,18 @@ select {
 
 // No need for touch/no-touch states becuase color remains the same
 a {
-    color: blue;
+    color: $color-green-dark;
     @include transition(color $transition-speed-normal ease);
+}
 
-    &:hover {
-        color: blue;
-        @include transition(color $transition-speed-normal ease);
-    }
+html.no-touch a:hover {
+    color: $color-green-dark-var;
+    @include transition(color $transition-speed-normal ease);
 }
 
 // Remove telephone link styling.
 a[href^=tel] {
-    color:inherit;
+    color: $color-green-dark;
     text-decoration:none;
 }
 

@@ -13,6 +13,10 @@ module.exports = function(grunt) {
             scripts: {
                 files: ['asset.src/js/**/*.js'],
                 tasks: ['concat']
+            },
+            html: {
+                files: ['asset.src/**/*.html'],
+                tasks: ['copy:html']
             }
         },
 
@@ -96,7 +100,7 @@ module.exports = function(grunt) {
                 dest: 'asset.dist/js/modernizr.js'
             },
             libs: {
-                src: ['bower_components/jquery/dist/jquery.js', 'bower_components/swiper/dist/idangerous.swiper.js', 'asset.src/js/froogaloop.js', 'bower_components/jquery-easing/jquery.easing.js', 'asset.src/js/tappy.js'],
+                src: ['bower_components/jquery/dist/jquery.js', 'bower_components/swiper/dist/idangerous.swiper.js', 'asset.src/js/froogaloop.js', 'bower_components/jquery-easing/jquery.easing.js', 'asset.src/js/tappy.js', 'bower_components/eventEmitter/EventEmitter.js', 'bower_components/eventie/eventie.js', 'bower_components/imagesloaded/imagesloaded.js'],
                 dest: 'asset.dist/js/libs.js'
             },
             functions: {

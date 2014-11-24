@@ -324,6 +324,24 @@ $(function(){
 $(function() {
 
 	_startPaginationCycle();
+
+	var imgLoadiPhoneWrapperLarge = imagesLoaded($('.iphone-wrapper'));
+
+	// Once images are loaded
+	imgLoadiPhoneWrapperLarge.on('done', function() {
+		$('.iphone-wrapper').addClass('visible-fade-slow');
+		$('.pagination-wrapper').addClass('visible-fade-slow');
+	});
+
+	var imgLoadiPhoneWrapperSmall = imagesLoaded($('.iphone-wrapper-small'));
+
+	// Once images are loaded
+	imgLoadiPhoneWrapperLarge.on('done', function() {
+		$('.iphone-wrapper-small').addClass('visible-fade-slow');
+		$('.pagination-wrapper-small').addClass('visible-fade-slow');
+	});
+
+
 	
 
 	$('.swiper-pagination-switch').tapClick( function() {
@@ -408,7 +426,7 @@ function _stopPaginationCycle() {
 function _changePagination(index) {
 
 	var activeItem = $('.iphone-wrapper').find('.swiper-slide[data-index=' + index + ']');
-	$('.swiper-pagination-switch').each(function() {
+	$('.pagination-wrapper .swiper-pagination-switch').each(function() {
 		$(this).removeClass('swiper-active-switch');
 	});
 
