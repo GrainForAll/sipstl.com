@@ -1,6 +1,14 @@
 var player = null;
 var iphoneSwiper = null;
+var iphoneSwiperInterval = null;
 var activeIndex = 1;
+var playedBefore = false;
+
+var played = localStorage.getItem('sipSTLVideoPlay');
+if (played == 'true') {
+	playedBefore = true;
+}
+
 
 
 // Swiper for small viewport only.
@@ -20,6 +28,7 @@ $(function(){
 
 $(function() {
 
+	_startPaginationCycle();
 	
 
 	$('.swiper-pagination-switch').tapClick( function() {
@@ -29,7 +38,10 @@ $(function() {
 		}
 	});
 
+
+
 	$('.iphone-wrapper .left-arrow-wrapper').tapClick( function() {
+		_stopPaginationCycle();
 		activeIndex--;
 		if (activeIndex < 1) {
 			activeIndex = 6;
@@ -38,6 +50,7 @@ $(function() {
 	});
 
 	$('.iphone-wrapper .right-arrow-wrapper').tapClick( function() {
+		_stopPaginationCycle();
 		activeIndex++;
 		if (activeIndex > 6) {
 			activeIndex = 1;
@@ -66,9 +79,7 @@ $(function() {
 			player.addEvent('pause', _onVideoPause);
 			player.addEvent('finish', _onVideoFinish);
 
-			var played = localStorage.getItem('sipSTLVideoPlay');
-
-			if (played !== 'true') {
+			if (!playedBefore) {
 
 				if ($('html').hasClass('no-touch')) {
 
@@ -81,6 +92,23 @@ $(function() {
 		});
 	});
 });
+
+function _startPaginationCycle() {
+
+	iphoneSwiperInterval = setInterval(function(){
+
+		activeIndex++;
+		if (activeIndex > 6) {
+			activeIndex = 1;
+		}
+		_changePagination(activeIndex);
+
+	}, 2000);
+}
+
+function _stopPaginationCycle() {
+	clearInterval(iphoneSwiperInterval);
+}
 
 function _changePagination(index) {
 
@@ -100,14 +128,20 @@ function _onVideoFinish(id) {
 }
 
 function _onVideoPlay(id) {
-	$('html, body').animate( { scrollTop: 0 }, 400, 'easeOutExpo', function() {
-		$('body').addClass('video-playing');
-	});
+	if (!playedBefore) {
+		$('html, body').animate( { scrollTop: 0 }, 400, 'easeOutExpo', function() {
+			$('body').addClass('video-playing');
+		});
+	} else {
+		$('html, body').animate( { scrollTop: 0 }, 400, 'easeOutExpo', function() {});
+	}
 }
 
 function _onVideoPlayProgress(id) {
 }
 
 function _onVideoPause(id) {
-	$('body').removeClass('video-playing');
+	if (!playedBefore) {
+		$('body').removeClass('video-playing');
+	}
 }
