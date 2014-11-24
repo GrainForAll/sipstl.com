@@ -12,6 +12,7 @@
     "grunt-contrib-sass": "~0.7.3",
     "grunt-contrib-uglify": "^0.4.0",
     "grunt-contrib-watch": "0.4.3",
+    "grunt-include-replace": "^2.0.0",
     "grunt-sass": "0.6.1",
     "grunt-svgmin": "^0.4.0"
   },

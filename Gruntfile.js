@@ -145,6 +145,18 @@ module.exports = function(grunt) {
                     {'asset.dist/js/scripts.js': ['asset.dist/js/scripts.js']}
                 ]
             }
+        },
+
+        includereplace: {
+            dist: {
+                options: {
+                    globals: {
+                        timestamp: new Date().getTime(),
+                    },
+                },
+                src: 'asset.dist/index.html',
+                dest: 'asset.dist/index.html'
+            }
         }
 
     });
@@ -158,9 +170,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    grunt.loadNpmTasks('grunt-include-replace');
 
     // Image optimization
     // Tell Grunt which tasks to run on cl 'grunt'
-    grunt.registerTask('default', ['sass', 'concat', 'copy', 'cssmin', 'uglify']);
+    grunt.registerTask('default', ['sass', 'concat', 'copy', 'cssmin', 'uglify', 'includereplace']);
 
 };
