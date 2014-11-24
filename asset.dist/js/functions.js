@@ -7,3 +7,7 @@ $.fn.extend({
 		}
 	}
 });
+
+function isTouch() {
+	return $('html').hasClass('touch');
+}
