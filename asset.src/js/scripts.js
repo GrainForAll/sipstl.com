@@ -11,7 +11,6 @@ if (played === 'true') {
 
 
 $(function() {
-
 	$('.video-wrapper iframe').load(function() {
 
 		player = $f(document.getElementById('promotional-video'));
@@ -25,6 +24,7 @@ $(function() {
 
 			if (!playedBefore && !isTouch() && ($(window).width() > 900)) {
 				player.api('play');
+				localStorage.setItem('sipSTLVideoPlay', 'true');
 			}
 		});
 	});
@@ -89,6 +89,9 @@ $(function() {
 
 	_startPaginationCycle();
 
+	$('.video-outer-wrapper').addClass('visible-fade-ultra-slow');
+	$('.content-outer-wrapper').addClass('visible-fade-slow');
+
 });
 
 
@@ -134,6 +137,8 @@ function _onVideoPlay(id) {
 	if (!playedBefore && !isTouch()) {
 		$('html, body').animate( { scrollTop: 0 }, 400, 'easeOutExpo', function() {
 			$('body').addClass('video-playing');
+			$('.logo-wrapper').slideUp();
+			$('.content-outer-wrapper').removeClass('visible-fade-slow');
 		});
 	} else {
 		$('html, body').animate( { scrollTop: 0 }, 400, 'easeOutExpo', function() {});
@@ -146,6 +151,8 @@ function _onVideoPlayProgress(id) {
 function _onVideoPause(id) {
 	if (!playedBefore && !isTouch()) {
 		$('body').removeClass('video-playing');
+		$('.logo-wrapper').slideDown();
+		$('.content-outer-wrapper').addClass('visible-fade-slow');
 	}
 }
 
