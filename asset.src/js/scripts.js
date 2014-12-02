@@ -23,7 +23,7 @@ $(function() {
 			player.addEvent('finish', _onVideoFinish);
 
 			if (!playedBefore && !isTouch() && ($(window).width() > 900)) {
-				player.api('play');
+				// player.api('play');
 				localStorage.setItem('sipSTLVideoPlay', 'true');
 			}
 		});
