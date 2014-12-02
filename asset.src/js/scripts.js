@@ -5,9 +5,9 @@ var activeIndex = 1;
 var playedBefore = true;
 
 // var played = localStorage.getItem('sipSTLVideoPlay');
-if (played === 'true') {
-	playedBefore = true;
-}
+// if (played === 'true') {
+// 	playedBefore = true;
+// }
 
 
 $(function() {
