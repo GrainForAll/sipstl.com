@@ -2,9 +2,9 @@ var player = null;
 var iphoneSwiper = null;
 var iphoneSwiperInterval = null;
 var activeIndex = 1;
-var playedBefore = false;
+var playedBefore = true;
 
-var played = localStorage.getItem('sipSTLVideoPlay');
+// var played = localStorage.getItem('sipSTLVideoPlay');
 if (played === 'true') {
 	playedBefore = true;
 }
@@ -24,7 +24,7 @@ $(function() {
 
 			if (!playedBefore && !isTouch() && ($(window).width() > 900)) {
 				// player.api('play');
-				localStorage.setItem('sipSTLVideoPlay', 'true');
+				// localStorage.setItem('sipSTLVideoPlay', 'true');
 			}
 		});
 	});
