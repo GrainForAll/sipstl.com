@@ -2,12 +2,12 @@ var player = null;
 var iphoneSwiper = null;
 var iphoneSwiperInterval = null;
 var activeIndex = 1;
-var playedBefore = false;
+var playedBefore = true;
 
-var played = localStorage.getItem('sipSTLVideoPlay');
-if (played === 'true') {
-	playedBefore = true;
-}
+// var played = localStorage.getItem('sipSTLVideoPlay');
+// if (played === 'true') {
+	// playedBefore = true;
+// }
 
 
 $(function() {
@@ -23,8 +23,8 @@ $(function() {
 			player.addEvent('finish', _onVideoFinish);
 
 			if (!playedBefore && !isTouch() && ($(window).width() > 900)) {
-				player.api('play');
-				localStorage.setItem('sipSTLVideoPlay', 'true');
+				// player.api('play');
+				// localStorage.setItem('sipSTLVideoPlay', 'true');
 			}
 		});
 	});
